@@ -1,0 +1,8 @@
+# Lista de archivos y carpetas a ser ignoradas de git
+#  Ignorando archivos de video
+*.mov
+*.avi
+
+# Directorio de dependencias
+node_modules/
+
