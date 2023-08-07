@@ -144,8 +144,12 @@ console.log( "Boolean(`Hola`): " + Boolean(`Hola`)); // true
 console.log( "Boolean(`false`): " + Boolean(`false`)); // true
 console.log( "Boolean(` `): " + Boolean(" ")); // true
 
+//Number
+// [] -> 0, [30] -> 30, [30,33] -> NaN, false -> 0, true -> 1
+//String
+//[] -> "", [12,2] -> "12,2", function(){} -> "function (){}", {} -> [object, object]
 
-
+console.log (String( JSON ))
 
 
 
