@@ -69,8 +69,55 @@ console.log(`mySymbol === mySymbol2 ${mySymbol === mySymbol2}`);
 
 const myObj = {
     clave : "valor",
-    [mySymbol] : 16,
+    [mySymbol] : 16, // se creará una clave privada, esta no se itera con un ciclo, no se almacena en LocalStorage
     myKey :123,
     [myKey] : 567,
 }
 console.log(myObj);
+
+//------------------- Objetos en JavaScriptc
+// tipo de dato Array
+const cancionesCh30 = ["Highway Star", "Trouble", "Saoko", "Rock Dj"];
+const misDatosDePerfil = {
+    name: "Sergio", 
+    lastname: "Torres",
+    age: 39,
+    isBelicoso: false,
+    fullName: function(){
+        return `Nombre completo de Sergh: ${this.name} ${this.lastname}`;
+        // return "Nombre completo de Sergh: " + this.name + " " + this.lastname;    
+    }   
+}
+        
+
+
+
+console.log( misDatosDePerfil);
+console.table( misDatosDePerfil);
+console.log(misDatosDePerfil.fullName() );// Sergio Torres
+console.log(misDatosDePerfil.fullName );// ƒ (){ return "Nombre completo de Sergh: " + this.name + " " + this.lastname;  // return "Nombre completo de Sergh: " + this.name + " " + this.lastname;}
+
+
+//--------------
+//Conversión explicita de datos
+const horaDescanso = 13.05;
+console.log("Hora de Descanso" + horaDescanso + "h."); //concatenacion 
+const horaDescansoTxt = String(horaDescanso);
+console.log("Hora Descanso" + horaDescansoTxt + "h."); // concatenación
+console.log("Hora de retorno:" + horaDescanso + .15); //13.050.15
+
+const colorVerde = 0x008000; // 32768
+console.log(`El valor RGB del color verde es: ${colorVerde}`); //32768
+console.log(`El valor RGB del color verde es: ${colorVerde.toString()}`); //32768
+console.log(`El valor RGB del color verde es: ${colorVerde.toString(16)}`); //8000
+console.log(`El valor RGB del color verde es: #${colorVerde.toString(16).padStart(6,"0") }`); //8000
+
+//Conversión a Number
+const myAgeTxt = "25";
+const sumatoria = 10 + myAgeTxt;  //
+console.log(`Valor de la sumatoria ${sumatoria}`);// 1025
+
+console.log(`Valor de la sumatoria usando number() ${ 10 + Number(myAgeTxt)}`);// 35
+console.log(`Valor de la sumatoria usando Number() ${10 + parseInt (myAgeTxt)}`);// 35 toma la parte entera
+console.log(`Valor de la sumatoria usando Number() ${10 + parseFloat (myAgeTxt)}`);// 35 toma la parte entera y decimal de un número
+console.log(`Valor de la sumatoria usando Number() ${10 + (+myAgeTxt)}`);// 35 operador lunario
