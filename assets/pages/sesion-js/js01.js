@@ -121,3 +121,22 @@ console.log(`Valor de la sumatoria usando number() ${ 10 + Number(myAgeTxt)}`);/
 console.log(`Valor de la sumatoria usando Number() ${10 + parseInt (myAgeTxt)}`);// 35 toma la parte entera
 console.log(`Valor de la sumatoria usando Number() ${10 + parseFloat (myAgeTxt)}`);// 35 toma la parte entera y decimal de un número
 console.log(`Valor de la sumatoria usando Number() ${10 + (+myAgeTxt)}`);// 35 operador lunario
+
+//Diferencias entre usar Number() y parseInt()
+//-Number convierte enteros y decimales
+//-parseInt convierte solo la parte entera
+console.log( parseInt(100.567)); //100
+// -Number devuelve NaN si la cadena contiene algún caracter no númerico 
+//-parseInt convierte los enteros hasta encontrar un caracter no númerico
+// Si la entrada no comienza con un valor númerico, devuelva NaN
+console.log( Number("123 - 456")); // NaN porque encontró el guión y los espacios
+console.log( parseInt ("123 - 456")); // 123 Va a convertir hasta donde encuentre caracteres válidos
+console.log( parseInt ("$123-456")); // NaN
+console.log( Number (true)); // 1
+console.log( parseInt (true)); // NaN
+
+
+
+
+
+
