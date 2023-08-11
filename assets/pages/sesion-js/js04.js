@@ -1,0 +1,189 @@
+console.log("Sesión JS04 matrices y bucles");
+
+// Declaramos un arreglo de 2 dimensiones (mmatriz).
+// Arrays anidados
+// [ [], [], [] ]
+
+const personasEnCh30 = [ 
+    [ "Luis", "Allan" , "Anneth"  , "Maryluz" ] ,  /* ByteMe */
+    [ "Ed"  , "Jimena", "Marifer" , "Leo"    , "Alejandro" ] ,  /* PerryCode */
+    [ "Lu"  , "Leo"   , "Daniel"  , "Gina"    ]    /* BugBusters */
+];
+
+console.log(`Integrantes de BugBusters: ${ personasEnCh30[2] }`); // Lu, Leo, Daniel, Gina
+console.log(`Integrantes de BugBusters: ${ personasEnCh30[2].join (", ") }`);
+
+console.log(`BugBusters integrante n. 1: ${ personasEnCh30[2][0] }`); // Lu
+
+//En la historia Leo tiene exceso ed amonestaciones.
+// Hay que reemplazar el nombre de Leo en PerryCode por Bryan.
+
+//personasEnCh30[1][3] = "Brayan";
+personasEnCh30[1].splice(3,1,  "Brayan");
+console.table(personasEnCh30);
+
+//---------Iterando todos los elementos
+for (let equipo = 0; equipo < personasEnCh30.length /*filas*/; equipo++) {
+    for (let persona = 0; persona <  personasEnCh30[ equipo ].length; persona++) {
+        console.log( personasEnCh30[ equipo ][ persona ] );        
+    }    
+}
+
+// ----------------------- Uso de for... of ------------------
+/* Ejecuta una sentencia por cada elemento de un objeto iterable(array, colección, string).
+Sintaxis:
+    for (const iterator of object) {
+    
+    }
+*/
+console.table( personasEnCh30 ); 
+
+const myPet = "Kraken";
+for (const character of myPet  ){
+    console.log( character );
+}
+
+for (const equipo of personasEnCh30 ) {
+    console.log( equipo ); // Arreglo de equipos
+    for (const persona of equipo) {
+        console.log( persona ); //  Persona de cada equipo
+    }
+}
+
+// ---------------- forEach -------------------------
+/*
+ Método que se utiliza para iterar colecciones, arreglos.
+ Permite ejecutar una función por cada elemento del arreglo.
+
+*/
+console.table( personasEnCh30 ); 
+
+function iterarEquipos( equipo, indice, arreglo ){
+    console.log(`Indice ${indice}: ${equipo} `)
+    equipo.forEach(  iterarPersonas  );
+    return equipo; // arreglo de cada equipo integrador
+}
+
+function iterarPersonas( persona, indice ){
+    console.log(`Indice P ${indice}: ${persona} `)
+    return persona;
+}
+
+
+// personasEnCh30.forEach( iterarEquipos );
+
+personasEnCh30.forEach( (equipo, indexEquipo) => 
+                    equipo.forEach( (persona, indexPer)=> 
+                    console.log(` [${indexEquipo}][${indexPer}] : ${persona}` )));
+ 
+// Solo se imprimi el elemento (persona)                    
+//personasEnCh30.forEach( equipo => equipo.forEach( persona=> console.log(`${persona}`)));
+
+// ------------------- Uso de break en ciclos ----------------------------
+// break no detiene la ejecución de la iteración en curso y termina el ciclo.
+
+for (let index = 0; index < 10; index++) {
+    if ( index >= 5 ) break;
+    console.log( index ); // 0...4    
+}
+
+// Realizar tablas de multiplicar de 1 al 5 con for tradicional
+/*
+  1 * 1  = 1
+  1 * 2  = 2
+  ...
+  5 * 9  = 45
+  5 * 10 = 50
+*/
+
+for (let i = 1; i <= 5; i++) {
+    for (let j = 1; j <= 10; j++) {
+        console.log(`${i} * ${j} = ${ i * j }`);        
+    }    
+}
+
+console.log("===== Uso de break =========")
+// Realizar la multiplicación hasta el 4
+// 1*1, 1*2, 1*3, 1*4..... 5*3, 5*4
+for (let i = 1; i <= 5; i++) {
+    for (let j = 1; j <= 10; j++) {
+        if ( j === 5 ) break;
+        console.log(`${i} * ${j} = ${ i * j }`);        
+    }    
+}
+
+console.log("===== Uso de break con tag =======")
+// Realizar la multiplicación hasta el 2 * 4
+// 1*1, 1*2, 1*3, 1*4..... 2*3, 2*4
+rompeCicloSuperior: 
+for (let i = 1; i <= 5; i++) {
+    
+    for (let j = 1; j <= 10; j++) {
+        if ( i===2 && j==5 ) break rompeCicloSuperior;
+        console.log(`${i} * ${j} = ${ i * j }`);        
+    }    
+}
+
+// -------------- Uso de continue ---------------------
+/*
+ Termina la ejecución en la iteración actual y continua con la próxima iteración.
+ ( o en el tag que se indique).
+*/
+console.log("===== Uso de continue con tag =======")
+// Realizar la multiplicación hasta el  3
+// 1*1, 1*2, 1*3 ..... 2*3... 5*3
+continuaCicloSuperior: 
+for (let i = 1; i <= 5; i++) {    
+    for (let j = 1; j <= 10; j++) {
+        if ( j > 3 ) continue continuaCicloSuperior;
+        console.log(`${i} * ${j} = ${ i * j }`);        
+    }    
+}
+
+// ============== Ciclo While ======================
+/*
+ Crea un bucle que ejecuta una sentencia mientras la condición especificada
+ se cumpla.
+
+ Sintaxis:
+    while( condición) sentencia;
+
+    while ( condición ){
+        sentencias;
+    }
+
+*/
+
+let counter = 1;
+
+/* while (  confirm("¿Quieres continuar?")  ) {
+    console.log(`Veces que has continuado: ${counter}` );
+    counter ++;
+} */
+
+// ============== Ciclo Do-While ======================
+/*
+ Crea un bucle que ejecuta una sentencia mientras la condición especificada
+ se cumpla. La evaluación se realiza después de ejecutar la sentencia.
+ Por lo tanto, la sentencia se va a ejecutar por lo menos una vez.
+
+ Sintaxis:
+
+    do {
+        sentencias;
+    } while( condición );
+
+*/
+
+let valor = -2;
+while ( valor < 5) {
+    console.log(`Valor en While ${valor}`); // -2, -1, 0, 1...4
+    valor ++;
+}
+
+valor = 4;
+do {
+    console.log(`Valor en do-while ${valor} `); // 4
+    valor++;
+} while ( valor < 5 );
+
